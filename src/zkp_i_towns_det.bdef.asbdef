@@ -1,0 +1,22 @@
+managed implementation in class zbp_kp_i_towns_det unique;
+//strict;
+
+define behavior for ZKP_I_TOWNS_DET alias Town
+persistent table zkp_towns_det
+
+//authorization master ( instance )
+etag master LastChangedAt
+lock master
+{
+  field ( readonly ) LastChangedAt, LastChangedBy, CreatedAt, Url, CreatedBy;
+
+  field ( mandatory ) Mayor, Population;
+
+  create;
+  update;
+  delete;
+
+  validation validateCity on save { field City, Country; }
+  determination CalculateUrl on modify
+  { create; }
+}

@@ -1,0 +1,76 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo: {
+  typeName: 'Zene',
+  typeNamePlural: 'Zenék',
+  title: {
+    type: #WITH_URL,
+    label: 'Youtube',
+    value: 'Title',
+    url: 'Url'
+  }
+}
+
+@UI.presentationVariant: [{ sortOrder: [{ by: 'Id' }] }]
+
+annotate view ZC_MUSIC5 with
+{
+
+  @UI.facet: [
+    { label: 'Általános',
+      id:   'idMusicColl',
+      position: 10,
+      type: #COLLECTION },
+
+    { label: 'A Dalról',
+      parentId: 'idMusicColl',
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'idAboutDataFG',
+      position: 10 },
+
+    { label: 'Hallgatás, Dalolás',
+      parentId: 'idMusicColl',
+      type: #FIELDGROUP_REFERENCE,
+      targetQualifier: 'idListenFG',
+      position: 20 }
+  ]
+
+
+  @EndUserText.label: 'Azonosító'
+  @UI.lineItem: [{ position: 10, label: 'Azonosító' }]
+  Id;
+
+  @EndUserText.label: 'Előadó'
+  @UI: {
+    lineItem:   [{ position: 20, label: 'Előadó' }],
+    fieldGroup: [{ qualifier: 'idAboutDataFG', position: 20 }]
+  }
+  @UI.selectionField: [{ position:10 }]
+  Artist;
+
+  @EndUserText.label: 'Cím'
+  @UI: {
+    lineItem:   [{ position: 30, label: 'Cím' }],
+    fieldGroup: [{ qualifier: 'idAboutDataFG', position: 5, type: #WITH_URL, url: 'Url' }]
+  }
+  Title;
+
+  @EndUserText.label: 'Műfaj'
+  @UI: {
+    lineItem:   [{ position: 40, label: 'Műfaj' }],
+    fieldGroup: [{ qualifier: 'idAboutDataFG', position: 10 }]
+  }
+  Genre;
+
+  @EndUserText.label: 'Dalszöveg'
+  @UI: {
+    lineItem: [{ exclude: true }],
+    fieldGroup: [{ qualifier: 'idListenFG', position: 10 }],
+    multiLineText: true
+  }
+  Lyrics;
+
+  @UI.lineItem: [{ exclude: true }]
+  Url;
+
+}

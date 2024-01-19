@@ -1,0 +1,5 @@
+CLASS zbp_kp_i_towns_det DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zkp_i_towns_det.
+ENDCLASS.
+
+CLASS zbp_kp_i_towns_det IMPLEMENTATION.
+ENDCLASS.

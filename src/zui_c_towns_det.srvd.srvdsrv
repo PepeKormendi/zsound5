@@ -1,0 +1,4 @@
+@EndUserText.label: 'SD Towns'
+define service ZUI_C_TOWNS_DET {
+  expose ZKP_C_TOWNS_DET;
+}
